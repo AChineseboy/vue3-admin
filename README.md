@@ -15,10 +15,9 @@
 ```
 
 commit 类型可以是：
-* 如果本次 commit 修复了某个页面的 bug，或为某个组件添加了 feature，则 commit 类型为该页面的名称
-* fix：修补bug
+* 如果本次 commit 修复了某个页面的 bug，或为某个页面添加了 feature，则 commit 类型为该页面的名称
 * docs：文档（documentation）
-* style： 代码格式（不影响代码运行的变动）
+* style： 修改了/src/style 中的某些内容
 * refactor：重构（即不是新增功能，也不是修改bug的代码变动）
 * test：本次 commit 修改了 test 中的某些内容
 * chore：构建过程或辅助工具的变动
