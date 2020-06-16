@@ -3,7 +3,7 @@
     <ul class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
       <li v-for="(item, index) in 200" :key="index">{{index}}</li>
     </ul>
-    <div class="scrollbar" @click="clickBarHandle">
+    <div class="scrollbar" @click.self="clickBarHandle">
       <div class="scrollbar-thumb" ref="barThumb"></div>
     </div>
   </section>
@@ -31,8 +31,8 @@ export default {
       const barPos = e.target.getBoundingClientRect().top;
       const offset = Math.abs(barPos - e.clientY);
       const thumbHalf = barThumb.value.clientHeight / 2;
-      const thumbPositionPercentage = (offset - thumbHalf) / clientHeight;
-      wrap.value.scrollTop = thumbPositionPercentage * scrollHeight;
+      const thumbPositionProportion = (offset - thumbHalf) / clientHeight;
+      wrap.value.scrollTop = thumbPositionProportion * scrollHeight;
     }
     onMounted(() => {
       updata();
