@@ -22,4 +22,4 @@ commit 类型可以是：
 * chore：构建过程或辅助工具的变动
 * utils: 修改了/src/utils 中的某些内容
 * view: 视图修改
-* bugs: 修改某个bug
+* fix: 修改某个bug
