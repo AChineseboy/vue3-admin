@@ -3,18 +3,19 @@
     <ul class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
       <li v-for="(item, index) in 200" :key="index">{{index}}</li>
     </ul>
-    <div class="scrollbar" @click.self="clickBarHandle">
-      <div class="scrollbar-thumb" ref="barThumb"></div>
+    <div class="scrollbar" ref="bar" @click.self="clickBarHandle">
+      <div class="scrollbar-thumb" ref="barThumb" @mousedown="clickThumbHandle"></div>
     </div>
   </section>
 </template>
 <script>
-// reference https://github.com/noeldelgado/gemini-scrollbar/blob/master/index.js
-import { ref, onMounted } from 'vue';
+// reference https://github.com/ElemeFE/element/tree/dev/packages/scrollbar
+import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
   setup() {
     const wrap = ref(null);
+    const bar = ref(null);
     const barThumb = ref(null);
     function updata() {
       const { scrollHeight, clientHeight } = wrap.value;
@@ -26,6 +27,7 @@ export default {
       barThumb.value.style.transform = `translateY(${(scrollTop / clientHeight) * 100}%)`;
     }
 
+    // click scrollbar
     function clickBarHandle(e) {
       const { scrollHeight, clientHeight } = wrap.value;
       const barPos = e.target.getBoundingClientRect().top;
@@ -34,14 +36,50 @@ export default {
       const thumbPositionProportion = (offset - thumbHalf) / clientHeight;
       wrap.value.scrollTop = thumbPositionProportion * scrollHeight;
     }
+
+    // drag thumb
+    let cursorDown = false;
+    let axis;
+    function clickThumbHandle(e) {
+      if (e.ctrlKey || e.button === 2) {
+        return;
+      }
+      // eslint-disable-next-line operator-linebreak
+      axis =
+        e.currentTarget.offsetHeight - (e.clientY - e.currentTarget.getBoundingClientRect().top);
+      cursorDown = true;
+    }
+    function mouseMoveHandle(e) {
+      if (!cursorDown) return;
+      // move offset
+      const offset = (bar.value.getBoundingClientRect().top - e.clientY) * -1;
+      // click pos of thumb
+      const thumbClickPosition = barThumb.value.clientHeight - axis;
+      // move proportion
+      const thumbPositionProportion = (offset - thumbClickPosition) / bar.value.offsetHeight;
+
+      wrap.value.scrollTop = thumbPositionProportion * wrap.value.scrollHeight;
+    }
+    function mouseUpHandle() {
+      cursorDown = false;
+    }
+    document.addEventListener('mousemove', mouseMoveHandle);
+    document.addEventListener('mouseup', mouseUpHandle);
+
     onMounted(() => {
       updata();
     });
+    onUnmounted(() => {
+      document.removeEventListener('mousemove', mouseMoveHandle);
+      document.removeEventListener('mouseup', mouseUpHandle);
+    });
     return {
       wrap,
+      bar,
       barThumb,
       scrollHandle,
       clickBarHandle,
+      clickThumbHandle,
     };
   },
 };
