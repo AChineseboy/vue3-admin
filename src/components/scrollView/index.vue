@@ -1,10 +1,16 @@
 <template>
   <section class="scroll-view">
-    <ul class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
+    <h1>{{heightPercentage.value}}</h1>
+    <div class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
       <li v-for="(item, index) in 200" :key="index">{{index}}</li>
-    </ul>
-    <div class="scrollbar" ref="bar" @click.self="clickBarHandle">
-      <div class="scrollbar-thumb" ref="barThumb" @mousedown="clickThumbHandle"></div>
+    </div>
+    <div class="scrollbar" v-if="heightPercentage < 100" ref="bar" @click.self="clickBarHandle">
+      <div
+        class="scrollbar-thumb"
+        ref="barThumb"
+        :style="{height:`${heightPercentage}%`}"
+        @mousedown="clickThumbHandle"
+      ></div>
     </div>
   </section>
 </template>
@@ -17,10 +23,10 @@ export default {
     const wrap = ref(null);
     const bar = ref(null);
     const barThumb = ref(null);
+    const heightPercentage = ref(0);
     function updata() {
       const { scrollHeight, clientHeight } = wrap.value;
-      const heightPercentage = (clientHeight / scrollHeight) * 100;
-      barThumb.value.style.height = heightPercentage < 100 ? `${heightPercentage}%` : '';
+      heightPercentage.value = (clientHeight / scrollHeight) * 100;
     }
     function scrollHandle() {
       const { scrollTop, clientHeight } = wrap.value;
@@ -77,6 +83,7 @@ export default {
       wrap,
       bar,
       barThumb,
+      heightPercentage,
       scrollHandle,
       clickBarHandle,
       clickThumbHandle,
