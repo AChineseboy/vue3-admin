@@ -29,7 +29,6 @@ export default {
   height: 56px;
   line-height: 56px;
   padding: 0 20px;
-  padding-right: 0;
   cursor: pointer;
   &:hover {
     background-color: blue;

@@ -1,6 +1,6 @@
 <template>
   <ul class="zm-menu">
-    <slot @="itemClick"></slot>
+    <slot></slot>
   </ul>
 </template>
 <style lang="less" scoped>
@@ -13,16 +13,10 @@ export default {
   name: 'ZmMenu',
   setup() {
     const activeItem = ref(null);
-
     emitter.on('item-click', (index) => {
       activeItem.value = index;
     });
-    function itemClick() {}
     provide('activeItem', activeItem);
-    // console.log(slots.default());
-    return {
-      itemClick,
-    };
   },
 };
 </script>
