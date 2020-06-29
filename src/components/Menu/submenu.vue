@@ -1,13 +1,44 @@
 <template>
-  <li class="zm-submenu opened">
-    <div class="submenu-title">
+  <li class="zm-submenu" :class="{opened: isOpen}">
+    <div class="submenu-title" @click="menuClickHandle">
       <slot name="title"></slot>
       <i class="submenu-icon"></i>
     </div>
+    <ul class="menu">
+      <slot></slot>
+    </ul>
   </li>
 </template>
+<script>
+import { inject, computed } from 'vue';
+
+export default {
+  props: {
+    index: String,
+  },
+  setup(props) {
+    const openedMenus = inject('openedMenus');
+    const openMenu = inject('openMenu');
+    const closeMenu = inject('closeMenu');
+
+    const isOpen = computed(() => openedMenus.value.includes(props.index));
+    const menuClickHandle = () => {
+      if (isOpen.value) {
+        closeMenu(props.index);
+      } else {
+        openMenu(props.index);
+      }
+    };
+    return {
+      isOpen,
+      menuClickHandle,
+    };
+  },
+};
+</script>
 <style lang="less" scoped>
 .zm-submenu {
+  cursor: pointer;
   .submenu-title {
     height: 56px;
     line-height: 56px;
@@ -26,8 +57,15 @@
       right: 20px;
     }
   }
-  &.opened{
-    .submenu-icon{
+  .menu {
+    background-color: red;
+    display: none;
+  }
+  &.opened {
+    .menu {
+      display: block;
+    }
+    .submenu-icon {
       background-color: sandybrown;
     }
   }

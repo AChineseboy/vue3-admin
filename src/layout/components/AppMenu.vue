@@ -10,6 +10,19 @@
             <span>导航四</span>
           </div>
         </template>
+        <zm-menu-item index="5">选项一</zm-menu-item>
+        <zm-menu-item index="6">选项二</zm-menu-item>
+        <zm-menu-item index="7">选项三</zm-menu-item>
+      </zm-submenu>
+      <zm-submenu index="8">
+        <template v-slot:title>
+          <div>
+            <span>导航五</span>
+          </div>
+        </template>
+        <zm-menu-item index="5">选项一</zm-menu-item>
+        <zm-menu-item index="6">选项二</zm-menu-item>
+        <zm-menu-item index="7">选项三</zm-menu-item>
       </zm-submenu>
     </zm-menu>
   </div>

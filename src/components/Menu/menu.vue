@@ -16,7 +16,20 @@ export default {
     emitter.on('item-click', (index) => {
       activeItem.value = index;
     });
+
+    const openedMenus = ref([]);
+    const openMenu = (index) => {
+      openedMenus.value.push(index);
+    };
+    const closeMenu = (subMenuIndex) => {
+      const index = openedMenus.value.indexOf(subMenuIndex);
+      openedMenus.value.splice(index, 1);
+    };
+
     provide('activeItem', activeItem);
+    provide('openedMenus', openedMenus);
+    provide('openMenu', openMenu);
+    provide('closeMenu', closeMenu);
   },
 };
 </script>
