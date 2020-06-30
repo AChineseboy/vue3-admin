@@ -22,6 +22,7 @@ export default {
     const closeMenu = inject('closeMenu');
 
     const isOpen = computed(() => openedMenus.value.includes(props.index));
+
     const menuClickHandle = () => {
       if (isOpen.value) {
         closeMenu(props.index);
@@ -62,10 +63,10 @@ export default {
     display: none;
   }
   &.opened {
-    .menu {
+    > .menu {
       display: block;
     }
-    .submenu-icon {
+    > .submenu-icon {
       background-color: sandybrown;
     }
   }
