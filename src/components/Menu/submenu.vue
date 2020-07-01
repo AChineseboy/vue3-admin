@@ -1,6 +1,6 @@
 <template>
   <li class="zm-submenu" :class="{opened: isOpen}">
-    <div class="submenu-title" @click="menuClickHandle">
+    <div class="submenu-title" @click="menuClickHandle" :style="paddingStyle">
       <slot name="title"></slot>
       <i class="submenu-icon"></i>
     </div>
@@ -11,18 +11,20 @@
 </template>
 <script>
 import { inject, computed } from 'vue';
+import menuMixin from './menu-mixin';
 
 export default {
+  name: 'ZmSubmenu',
   props: {
     index: String,
   },
+  mixins: [menuMixin],
   setup(props) {
     const openedMenus = inject('openedMenus');
     const openMenu = inject('openMenu');
     const closeMenu = inject('closeMenu');
 
     const isOpen = computed(() => openedMenus.value.includes(props.index));
-
     const menuClickHandle = () => {
       if (isOpen.value) {
         closeMenu(props.index);
@@ -43,7 +45,6 @@ export default {
   .submenu-title {
     height: 56px;
     line-height: 56px;
-    padding: 0 20px;
     position: relative;
     &:hover {
       background-color: blue;

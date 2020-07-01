@@ -1,17 +1,24 @@
 <template>
-  <li class="menu-item" :class="{active: activeItem === index}" @click="menuItemHandle">
+  <li
+    class="menu-item"
+    :class="{active: activeItem === index}"
+    :style="paddingStyle"
+    @click="menuItemHandle"
+  >
     <slot></slot>
   </li>
 </template>
 <script>
 import { inject } from 'vue';
 import emitter from '@/utils/emitter';
+import menuMixin from './menu-mixin';
 
 export default {
   name: 'ZmMenuItem',
   props: {
     index: String,
   },
+  mixins: [menuMixin],
   setup(props) {
     const activeItem = inject('activeItem');
     function menuItemHandle() {
@@ -28,7 +35,6 @@ export default {
 .menu-item {
   height: 56px;
   line-height: 56px;
-  padding: 0 20px;
   cursor: pointer;
   &:hover {
     background-color: blue;
