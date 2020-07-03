@@ -1,6 +1,6 @@
 <template>
-  <li class="zm-submenu" :class="{opened: isOpen}">
-    <div class="submenu-title" @click="menuClickHandle" :style="paddingStyle">
+  <li class="zm-submenu" ref="submenu" :class="{opened: isOpen}">
+    <div class="submenu-title" ref="menu" @click="menuClickHandle">
       <slot name="title"></slot>
       <i class="submenu-icon"></i>
     </div>
@@ -10,15 +10,20 @@
   </li>
 </template>
 <script>
-import { inject, computed } from 'vue';
-import menuMixin from './menu-mixin';
+// prettier-ignore
+import {
+  inject,
+  computed,
+  ref,
+  onMounted,
+} from 'vue';
+import usePaddingStyle from './paddingStyle';
 
 export default {
   name: 'ZmSubmenu',
   props: {
     index: String,
   },
-  mixins: [menuMixin],
   setup(props) {
     const openedMenus = inject('openedMenus');
     const openMenu = inject('openMenu');
@@ -32,9 +37,18 @@ export default {
         openMenu(props.index);
       }
     };
+
+    const submenu = ref(null);
+    const menu = ref(null);
+    onMounted(() => {
+      usePaddingStyle(submenu, menu);
+    });
+
     return {
       isOpen,
       menuClickHandle,
+      submenu,
+      menu,
     };
   },
 };
@@ -67,7 +81,7 @@ export default {
     > .menu {
       display: block;
     }
-    > .submenu-icon {
+    > .submenu-title .submenu-icon {
       background-color: sandybrown;
     }
   }
