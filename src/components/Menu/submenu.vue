@@ -4,9 +4,11 @@
       <slot name="title"></slot>
       <i class="submenu-icon"></i>
     </div>
-    <ul class="menu">
-      <slot></slot>
-    </ul>
+    <menu-transition>
+      <ul class="menu" v-show="isOpen">
+        <slot></slot>
+      </ul>
+    </menu-transition>
   </li>
 </template>
 <script>
@@ -18,11 +20,15 @@ import {
   onMounted,
 } from 'vue';
 import usePaddingStyle from './paddingStyle';
+import menuTransition from './menu-transition.vue';
 
 export default {
   name: 'ZmSubmenu',
   props: {
     index: String,
+  },
+  components: {
+    menuTransition,
   },
   setup(props) {
     const openedMenus = inject('openedMenus');
@@ -75,12 +81,8 @@ export default {
   }
   .menu {
     background-color: red;
-    display: none;
   }
   &.opened {
-    > .menu {
-      display: block;
-    }
     > .submenu-title .submenu-icon {
       background-color: sandybrown;
     }
