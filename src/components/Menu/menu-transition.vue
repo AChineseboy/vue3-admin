@@ -13,6 +13,7 @@
 <script>
 /* eslint-disable no-param-reassign */
 import { Transition } from 'vue';
+import { addClass, removeClass } from '@/utils/dom';
 
 export default {
   components: {
@@ -20,7 +21,7 @@ export default {
   },
   setup() {
     function beforeEnter(el) {
-      el.className += ' transition';
+      addClass(el, 'transition');
       el.style.height = '0';
     }
     function enter(el) {
@@ -43,7 +44,7 @@ export default {
     }
     function afterLeave(el) {
       el.style.height = '';
-      el.className = 'menu';
+      removeClass(el, 'transition');
     }
     return {
       beforeEnter,
