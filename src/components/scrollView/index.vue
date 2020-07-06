@@ -1,9 +1,9 @@
 <template>
-  <section class="scroll-view">
+  <section class="scroll-view" ref="scrollView">
     <div class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
       <slot></slot>
     </div>
-    <div class="scrollbar" v-if="heightPercentage < 100" ref="bar" @click.self="clickBarHandle">
+    <div class="scrollbar" v-show="heightPercentage < 100" ref="bar" @click.self="clickBarHandle">
       <div
         class="scrollbar-thumb"
         ref="barThumb"
@@ -16,12 +16,14 @@
 <script>
 // reference https://github.com/ElemeFE/element/tree/dev/packages/scrollbar
 import { ref, onMounted, onUnmounted } from 'vue';
+import { addResizeEvent } from '@/utils/resize-event';
 
 export default {
   setup() {
     const wrap = ref(null);
     const bar = ref(null);
     const barThumb = ref(null);
+    const scrollView = ref(null);
     const heightPercentage = ref(0);
     function updata() {
       const { scrollHeight, clientHeight } = wrap.value;
@@ -73,6 +75,9 @@ export default {
 
     onMounted(() => {
       updata();
+      addResizeEvent(scrollView.value, () => {
+        updata();
+      });
     });
     onUnmounted(() => {
       document.removeEventListener('mousemove', mouseMoveHandle);
@@ -86,6 +91,7 @@ export default {
       scrollHandle,
       clickBarHandle,
       clickThumbHandle,
+      scrollView,
     };
   },
 };

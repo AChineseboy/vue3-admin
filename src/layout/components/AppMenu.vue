@@ -34,6 +34,8 @@
         <zm-menu-item index="6">选项二</zm-menu-item>
         <zm-menu-item index="7">选项三</zm-menu-item>
       </zm-submenu>
+      <zm-menu-item index="9">9</zm-menu-item>
+      <zm-menu-item index="12">12</zm-menu-item>
     </zm-menu>
   </scroll-view>
 </template>
