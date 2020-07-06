@@ -5,7 +5,7 @@
       <i class="submenu-icon"></i>
     </div>
     <menu-transition>
-      <ul class="menu" v-show="isOpen">
+      <ul class="zm-menu-children" v-show="isOpen">
         <slot></slot>
       </ul>
     </menu-transition>
@@ -79,7 +79,7 @@ export default {
       right: 20px;
     }
   }
-  .menu {
+  .zm-menu-children {
     background-color: red;
   }
   &.opened {

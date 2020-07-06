@@ -13,3 +13,7 @@ export function removeClass(el, cls) {
     el.classList.remove(clses[i]);
   }
 }
+
+export function hasClass(el, cls) {
+  return el.classList.contains(cls);
+}
