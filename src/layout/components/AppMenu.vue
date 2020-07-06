@@ -1,6 +1,6 @@
 <template>
-  <div class="menu">
-    <zm-menu>
+  <scroll-view>
+    <zm-menu class="menu">
       <zm-menu-item index="1">导航一</zm-menu-item>
       <zm-menu-item index="2">导航二</zm-menu-item>
       <zm-menu-item index="3">导航三</zm-menu-item>
@@ -35,13 +35,15 @@
         <zm-menu-item index="7">选项三</zm-menu-item>
       </zm-submenu>
     </zm-menu>
-  </div>
+  </scroll-view>
 </template>
 <script>
+import scrollView from '@/components/scrollView/index.vue';
 import { ZmMenu, ZmMenuItem, ZmSubmenu } from '@/components/Menu/index';
 
 export default {
   components: {
+    scrollView,
     ZmMenu,
     ZmMenuItem,
     ZmSubmenu,

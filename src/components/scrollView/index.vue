@@ -1,8 +1,7 @@
 <template>
   <section class="scroll-view">
-    <h1>{{heightPercentage.value}}</h1>
     <div class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
-      <li v-for="(item, index) in 200" :key="index">{{index}}</li>
+      <slot></slot>
     </div>
     <div class="scrollbar" v-if="heightPercentage < 100" ref="bar" @click.self="clickBarHandle">
       <div

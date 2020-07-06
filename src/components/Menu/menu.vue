@@ -35,6 +35,6 @@ export default {
 </script>
 <style lang="less" scoped>
 .zm-menu {
-  background-color: red;
+  background-color: #545c64;
 }
 </style>

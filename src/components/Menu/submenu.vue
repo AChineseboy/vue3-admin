@@ -66,8 +66,11 @@ export default {
     height: 56px;
     line-height: 56px;
     position: relative;
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
     &:hover {
-      background-color: blue;
+      background-color: #434a50;
     }
     .submenu-icon {
       position: absolute;
@@ -80,7 +83,7 @@ export default {
     }
   }
   .zm-menu-children {
-    background-color: red;
+    background-color: #545c64;
   }
   &.opened {
     > .submenu-title .submenu-icon {

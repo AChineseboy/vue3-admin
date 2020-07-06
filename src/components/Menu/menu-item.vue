@@ -37,11 +37,14 @@ export default {
   height: 56px;
   line-height: 56px;
   cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
   &:hover {
-    background-color: blue;
+    background-color: #434a50;
   }
   &.active {
-    color: green;
+    color: #ffd04b;
   }
 }
 </style>

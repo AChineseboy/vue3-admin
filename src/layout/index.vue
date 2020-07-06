@@ -43,4 +43,7 @@ export default {
 .zm-aside {
   background-color: #d3dce6;
 }
+.zm-container{
+  height: 100%;
+}
 </style>
