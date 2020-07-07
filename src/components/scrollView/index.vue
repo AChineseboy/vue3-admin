@@ -1,7 +1,9 @@
 <template>
-  <section class="scroll-view" ref="scrollView">
+  <section class="scroll-view">
     <div class="scroll-wrap" ref="wrap" @scroll="scrollHandle">
-      <slot></slot>
+      <div class="scoll-content" ref="scrollContent">
+        <slot></slot>
+      </div>
     </div>
     <div class="scrollbar" v-show="heightPercentage < 100" ref="bar" @click.self="clickBarHandle">
       <div
@@ -23,7 +25,7 @@ export default {
     const wrap = ref(null);
     const bar = ref(null);
     const barThumb = ref(null);
-    const scrollView = ref(null);
+    const scrollContent = ref(null);
     const heightPercentage = ref(0);
     function updata() {
       const { scrollHeight, clientHeight } = wrap.value;
@@ -75,7 +77,7 @@ export default {
 
     onMounted(() => {
       updata();
-      addResizeEvent(scrollView.value, () => {
+      addResizeEvent(scrollContent.value, () => {
         updata();
       });
     });
@@ -91,7 +93,7 @@ export default {
       scrollHandle,
       clickBarHandle,
       clickThumbHandle,
-      scrollView,
+      scrollContent,
     };
   },
 };
