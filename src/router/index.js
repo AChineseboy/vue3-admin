@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Layout from '../layout/index.vue';
-import HelloWord from '../views/HelloWord.vue';
+import Form from '../views/form.vue';
 
 const routes = [
   {
@@ -8,8 +8,8 @@ const routes = [
     component: Layout,
     children: [
       {
-        path: '/helloword',
-        component: HelloWord,
+        path: '/form',
+        component: Form,
       },
     ],
   },

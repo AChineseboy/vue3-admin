@@ -1,5 +1,5 @@
 <template>
-  <scroll-view>
+  <scroll-view class="scroll-box">
     <zm-menu class="menu">
       <zm-menu-item index="1">导航一</zm-menu-item>
       <zm-menu-item index="2">导航二</zm-menu-item>
@@ -55,5 +55,8 @@ export default {
 <style lang="less" scoped>
 .menu {
   width: 200px;
+}
+.scroll-box{
+  background-color: #545c64;
 }
 </style>
