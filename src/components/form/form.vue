@@ -4,7 +4,7 @@
   </form>
 </template>
 <script>
-import { computed } from 'vue';
+import { computed, provide } from 'vue';
 
 export default {
   name: 'ZmForm',
@@ -13,9 +13,13 @@ export default {
       type: String,
       default: 'left',
     },
+    rules: Object,
+    model: Object,
   },
   setup(props) {
     const labelPosClass = computed(() => `zm-form-label-${props.labelPosition}`);
+
+    provide('rules', props.rules);
     return {
       labelPosClass,
     };
@@ -49,6 +53,9 @@ export default {
     display: flex;
     align-items: center;
     margin-bottom: 22px;
+    &.zm-form-item-error .zm-input .zm-input-inner {
+      border-color: #f56c6c;
+    }
     .zm-item-label {
       width: 80px;
       margin-right: 12px;
