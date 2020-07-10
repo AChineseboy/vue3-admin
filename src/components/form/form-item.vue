@@ -1,5 +1,5 @@
 <template>
-  <div class="zm-form-item" :class="{'zm-form-item-error': !isThrough}">
+  <div class="zm-form-item" :class="{'zm-form-item-error': !isSuccess}">
     <label class="zm-item-label">{{label}}</label>
     <div class="zm-item-content">
       <slot></slot>
@@ -15,18 +15,6 @@ import {
 } from 'vue';
 import emitter from '@/utils/emitter';
 
-const useRule = (rules, prop) => {
-  const isThrough = ref(true);
-  emitter.on('zm-form-blur', (val) => {
-    isThrough.value = rules[prop].some((rule) => {
-      if (rule.required) {
-        return String.prototype.trim.call(val).length > 0;
-      }
-      return true;
-    });
-  });
-  return isThrough;
-};
 export default {
   name: 'ZmFormItem',
   props: {
@@ -34,10 +22,31 @@ export default {
     prop: String,
   },
   setup(props) {
-    const rules = inject('rules');
-    const isThrough = useRule(rules, props.prop);
+    const thisRules = inject('rules')[props.prop];
+    function addEvent(rule, handle) {
+      const eventName = `zm-form-${rule.trigger}`;
+      emitter.on(eventName, (...arg) => {
+        handle(rule, arg);
+      });
+    }
+    function checkRule(rule, val) {
+      let requiredAuth = true;
+      if (rule.required) {
+        requiredAuth = String.prototype.trim.apply(val).length > 0;
+      }
+      // eslint-disable-next-line no-param-reassign
+      rule.check = requiredAuth;
+    }
+    const isSuccess = ref(true);
+    thisRules.forEach((item) => {
+      addEvent(item, (...arg) => {
+        checkRule(...arg);
+        isSuccess.value = thisRules.every((rule) => rule.check);
+      });
+    });
+
     return {
-      isThrough,
+      isSuccess,
       ...toRefs(props),
     };
   },
