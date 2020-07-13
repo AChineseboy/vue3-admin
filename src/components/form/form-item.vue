@@ -3,6 +3,7 @@
     <label class="zm-item-label">{{label}}</label>
     <div class="zm-item-content">
       <slot></slot>
+      <span class="zm-form-item-error-msg" v-show="!isSuccess">{{errorMsg}}</span>
     </div>
   </div>
 </template>
@@ -30,23 +31,32 @@ export default {
       });
     }
     function checkRule(rule, val) {
-      let requiredAuth = true;
+      let auth = true;
       if (rule.required) {
-        requiredAuth = String.prototype.trim.apply(val).length > 0;
+        auth = String.prototype.trim.apply(val).length > 0;
+      } else {
+        auth = rule.rule.test(val);
       }
       // eslint-disable-next-line no-param-reassign
-      rule.check = requiredAuth;
+      rule.check = auth;
     }
     const isSuccess = ref(true);
+    const errorMsg = ref('');
     thisRules.forEach((item) => {
       addEvent(item, (...arg) => {
         checkRule(...arg);
-        isSuccess.value = thisRules.every((rule) => rule.check);
+        isSuccess.value = thisRules.every((rule) => {
+          if (!rule.check) {
+            errorMsg.value = rule.message;
+          }
+          return rule.check;
+        });
       });
     });
 
     return {
       isSuccess,
+      errorMsg,
       ...toRefs(props),
     };
   },

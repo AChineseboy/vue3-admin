@@ -16,6 +16,11 @@ const rules = {
       message: '请输入',
       trigger: 'blur',
     },
+    {
+      rule: /^123$/,
+      trigger: 'blur',
+      message: '请输入123',
+    },
   ],
 };
 export default {
