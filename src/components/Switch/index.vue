@@ -31,8 +31,9 @@ export default {
   setup(props, { emit }) {
     const isCheck = computed(() => props.modelValue === props.checkValue);
     function switchChange() {
-      emit('update:modelValue', !isCheck.value ? props.checkValue : props.uncheckValue);
-      emit('change', isCheck.value ? props.checkValue : props.uncheckValue);
+      const val = !isCheck.value ? props.checkValue : props.uncheckValue;
+      emit('update:modelValue', val);
+      emit('change', val);
     }
 
     return {
