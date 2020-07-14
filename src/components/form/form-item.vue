@@ -26,16 +26,19 @@ export default {
     const thisRules = inject('rules')[props.prop];
     function addEvent(rule, handle) {
       const eventName = `zm-form-${rule.trigger}`;
-      emitter.on(eventName, (...arg) => {
-        handle(rule, arg);
+      emitter.on(eventName, (val) => {
+        handle(rule, val);
       });
     }
     function checkRule(rule, val) {
       let auth = true;
       if (rule.required) {
         auth = String.prototype.trim.apply(val).length > 0;
-      } else {
-        auth = rule.rule.test(val);
+      } else if (rule.reg) {
+        auth = rule.reg.test(val);
+      } else if (rule.validator) {
+        // eslint-disable-next-line no-param-reassign
+        auth = rule.validator(val, rule);
       }
       // eslint-disable-next-line no-param-reassign
       rule.check = auth;

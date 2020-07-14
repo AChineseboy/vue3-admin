@@ -17,9 +17,19 @@ const rules = {
       trigger: 'blur',
     },
     {
-      rule: /^123$/,
+      reg: /^123$/,
       trigger: 'blur',
       message: '请输入123',
+    },
+    {
+      trigger: 'blur',
+      message: '函数式',
+      validator: (val) => {
+        if (val !== '456') {
+          return false;
+        }
+        return true;
+      },
     },
   ],
 };
