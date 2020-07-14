@@ -49,28 +49,6 @@ export default {
       }
     }
   }
-  .zm-form-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 22px;
-    .zm-form-item-error-msg {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      color: #f56c6c;
-      font-size: 12px;
-    }
-    &.zm-form-item-error .zm-input .zm-input-inner {
-      border-color: #f56c6c;
-    }
-    .zm-item-content{
-      position: relative;
-    }
-    .zm-item-label {
-      width: 80px;
-      margin-right: 12px;
-      font-size: 14px;
-    }
-  }
+
 }
 </style>
