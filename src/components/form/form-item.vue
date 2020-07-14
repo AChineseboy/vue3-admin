@@ -36,7 +36,7 @@ export default {
     },
   },
   setup(props) {
-    const thisRules = inject('rules')[props.prop];
+    const thisRules = inject('rules')[props.prop] || [];
     function addEvent(rule, handle) {
       const eventName = `zm-form-${rule.trigger}`;
       emitter.on(eventName, (val) => {
