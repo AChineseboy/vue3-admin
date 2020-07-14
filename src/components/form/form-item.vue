@@ -1,9 +1,18 @@
 <template>
-  <div class="zm-form-item" :class="{'zm-form-item-error': !isSuccess}">
-    <label class="zm-item-label">{{label}}</label>
+  <div
+    class="zm-form-item"
+    :class="{'zm-form-item-error': !isSuccess}"
+  >
+    <label
+      class="zm-item-label"
+      :style="{width: labelWidth}"
+    >{{label}}</label>
     <div class="zm-item-content">
       <slot></slot>
-      <span class="zm-form-item-error-msg" v-show="!isSuccess">{{errorMsg}}</span>
+      <span
+        class="zm-form-item-error-msg"
+        v-show="!isSuccess"
+      >{{errorMsg}}</span>
     </div>
   </div>
 </template>
@@ -21,6 +30,10 @@ export default {
   props: {
     label: String,
     prop: String,
+    labelWidth: {
+      type: String,
+      default: '80px',
+    },
   },
   setup(props) {
     const thisRules = inject('rules')[props.prop];
@@ -77,14 +90,11 @@ export default {
     color: #f56c6c;
     font-size: 12px;
   }
-  &.zm-form-item-error .zm-input .zm-input-inner {
-    border-color: #f56c6c;
-  }
+
   .zm-item-content {
     position: relative;
   }
   .zm-item-label {
-    width: 80px;
     margin-right: 12px;
     font-size: 14px;
   }

@@ -1,7 +1,16 @@
 <template>
-  <zm-form label-position="left" :rules="rules" :model="form">
-    <zm-form-item label="姓名" prop="name">
-      <zm-input v-model="form.name"></zm-input>
+  <zm-form
+    label-position="left"
+    :rules="rules"
+    :model="form"
+  >
+    <zm-form-item
+      label="姓名"
+      prop="name"
+    >
+      <zm-input v-model="form.name" show-word-limit max-length='20'>
+
+      </zm-input>
     </zm-form-item>
   </zm-form>
 </template>
@@ -24,12 +33,7 @@ const rules = {
     {
       trigger: 'blur',
       message: '函数式',
-      validator: (val) => {
-        if (val !== '456') {
-          return false;
-        }
-        return true;
-      },
+      validator: () => true,
     },
   ],
 };
