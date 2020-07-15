@@ -1,36 +1,41 @@
 <template>
-  <zm-form
-    label-position="left"
-    :rules="rules"
-    :model="form"
-  >
-    <zm-form-item
-      label="姓名"
-      prop="name"
+  <div>
+    <zm-form
+      label-position="left"
+      :rules="rules"
+      :model="form"
     >
-      <zm-input
-        v-model="form.name"
-        show-word-limit
-        max-length='20'
+      <zm-form-item
+        label="姓名"
+        prop="name"
       >
-      </zm-input>
-    </zm-form-item>
+        <zm-input
+          v-model="form.name"
+          show-word-limit
+          max-length='20'
+        >
+        </zm-input>
+      </zm-form-item>
 
-    <zm-form-item label="switch">
-      <zm-switch
-        v-model="form.switchVal"
-        check-value="123"
-        uncheck-value="456"
-        :disabled="true"
-        @change="switchHandle"
-      ></zm-switch>
-    </zm-form-item>
-  </zm-form>
+      <zm-form-item label="switch">
+        <zm-switch
+          v-model="form.switchVal"
+          check-value="123"
+          uncheck-value="456"
+          :disabled="true"
+          @change="switchHandle"
+        ></zm-switch>
+      </zm-form-item>
+    </zm-form>
+
+    <zm-pagination :total="100" :page-size="10" :current-page="1"></zm-pagination>
+  </div>
 </template>
 <script>
 import { ZmForm, ZmFormItem } from '@/components/form';
 import ZmInput from '@/components/Input/index.vue';
 import ZmSwitch from '@/components/Switch/index.vue';
+import ZmPagination from '@/components/Pagination/index.vue';
 
 const rules = {
   name: [
@@ -57,6 +62,7 @@ export default {
     ZmFormItem,
     ZmInput,
     ZmSwitch,
+    ZmPagination,
   },
   setup() {
     const form = {
