@@ -5,7 +5,7 @@
   >
     <span
       class="zm-switch__core"
-      :class="{'zm-switch-check': isCheck}"
+      :class="{'zm-switch-check': isCheck, disabled}"
     ></span>
   </div>
 </template>
@@ -27,10 +27,15 @@ export default {
       type: [Boolean, String, Number],
       default: false,
     },
+    disabled: {
+      type: Boolean,
+      deault: false,
+    },
   },
   setup(props, { emit }) {
     const isCheck = computed(() => props.modelValue === props.checkValue);
     function switchChange() {
+      if (props.disabled) return;
       const val = !isCheck.value ? props.checkValue : props.uncheckValue;
       emit('update:modelValue', val);
       emit('change', val);
@@ -73,6 +78,9 @@ export default {
         left: 100%;
         margin-left: -16px;
       }
+    }
+    &.disabled{
+      cursor: not-allowed;
     }
   }
 }

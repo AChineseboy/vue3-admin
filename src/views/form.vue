@@ -21,6 +21,7 @@
         v-model="form.switchVal"
         check-value="123"
         uncheck-value="456"
+        :disabled="true"
         @change="switchHandle"
       ></zm-switch>
     </zm-form-item>
