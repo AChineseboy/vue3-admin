@@ -28,10 +28,15 @@
       </zm-form-item>
     </zm-form>
 
-    <zm-pagination :total="100" :page-size="10" :current-page="1"></zm-pagination>
+    <zm-pagination
+      :total="100"
+      :page-size="30"
+      v-model:currentPage="currentPage"
+    ></zm-pagination>
   </div>
 </template>
 <script>
+import { ref } from 'vue';
 import { ZmForm, ZmFormItem } from '@/components/form';
 import ZmInput from '@/components/Input/index.vue';
 import ZmSwitch from '@/components/Switch/index.vue';
@@ -56,6 +61,7 @@ const rules = {
     },
   ],
 };
+
 export default {
   components: {
     ZmForm,
@@ -73,10 +79,12 @@ export default {
       // eslint-disable-next-line no-console
       console.log(val);
     }
+    const currentPage = ref(1);
     return {
       rules,
       form,
       switchHandle,
+      currentPage,
     };
   },
 };
