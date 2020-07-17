@@ -4,6 +4,7 @@
 
 <script>
 import '../node_modules/normalize.css/normalize.css';
+import '@/style/font.css';
 
 export default {};
 </script>
