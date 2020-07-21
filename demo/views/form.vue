@@ -38,10 +38,6 @@
 </template>
 <script>
 import { ref } from 'vue';
-import { ZmForm, ZmFormItem } from '@/components/form';
-import ZmInput from '@/components/Input/index.vue';
-import ZmSwitch from '@/components/Switch/index.vue';
-import ZmPagination from '@/components/Pagination/index.vue';
 
 const rules = {
   name: [
@@ -64,13 +60,6 @@ const rules = {
 };
 
 export default {
-  components: {
-    ZmForm,
-    ZmFormItem,
-    ZmInput,
-    ZmSwitch,
-    ZmPagination,
-  },
   setup() {
     const form = {
       name: 123,

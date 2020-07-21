@@ -13,21 +13,12 @@
   </zm-container>
 </template>
 <script>
-import ZmContainer from '@/components/Container/index.vue';
-import ZmHeader from '@/components/Header/index.vue';
-import ZmMain from '@/components/Main/index.vue';
-import ZmFooter from '@/components/Footer/index.vue';
-import ZmAside from '@/components/Aside/index.vue';
+
 import AppMenu from './components/AppMenu.vue';
 
 export default {
   components: {
     AppMenu,
-    ZmContainer,
-    ZmHeader,
-    ZmMain,
-    ZmFooter,
-    ZmAside,
   },
 };
 </script>

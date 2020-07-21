@@ -1,5 +1,5 @@
 <template>
-  <scroll-view class="scroll-box">
+  <zm-scroll-view class="scroll-box">
     <zm-menu class="menu">
       <zm-menu-item index="1">导航一</zm-menu-item>
       <zm-menu-item index="2">导航二</zm-menu-item>
@@ -37,19 +37,12 @@
       <zm-menu-item index="9">9</zm-menu-item>
       <zm-menu-item index="12">12</zm-menu-item>
     </zm-menu>
-  </scroll-view>
+  </zm-scroll-view>
 </template>
 <script>
-import scrollView from '@/components/scrollView/index.vue';
-import { ZmMenu, ZmMenuItem, ZmSubmenu } from '@/components/Menu/index';
 
 export default {
-  components: {
-    scrollView,
-    ZmMenu,
-    ZmMenuItem,
-    ZmSubmenu,
-  },
+
 };
 </script>
 <style lang="less" scoped>

@@ -21,6 +21,7 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { addResizeEvent } from '@/utils/resize-event';
 
 export default {
+  name: 'ZmScrollView',
   setup() {
     const wrap = ref(null);
     const bar = ref(null);
