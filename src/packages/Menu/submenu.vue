@@ -20,7 +20,7 @@ import {
   onMounted,
 } from 'vue';
 import usePaddingStyle from './paddingStyle';
-import menuTransition from './menu-transition.vue';
+import menuTransition from './menuTransition.vue';
 
 export default {
   name: 'ZmSubmenu',

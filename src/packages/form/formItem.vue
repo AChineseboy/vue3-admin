@@ -23,7 +23,8 @@ import {
   inject,
   ref,
 } from 'vue';
-import emitter from '@/utils/emitter';
+// eslint-disable-next-line import/extensions
+import emitter from '@/utils/emitter.js';
 
 export default {
   name: 'ZmFormItem',
