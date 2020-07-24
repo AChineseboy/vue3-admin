@@ -20,5 +20,6 @@ export function addResizeEvent(el, callback = defaultListener) {
   el.__resizeListeners__.push(callback);
 }
 export function removeResizeEvent(el, callback) {
+  // eslint-disable-next-line no-console
   console.log(el, callback);
 }
