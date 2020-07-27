@@ -1,3 +1,3 @@
-import ZmScrollView from './scrollView.vue';
+import ZmScrollView from './scrollView';
 
 export default ZmScrollView;
