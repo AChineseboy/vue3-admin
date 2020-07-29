@@ -1,7 +1,10 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Layout from '../layout/index.vue';
 import Form from '../views/form.vue';
+import testMd from '../../docs/test.md';
+import test2 from '../../build/doc-loader/markdownitoutput.vue';
 
+console.log(testMd, Form);
 const routes = [
   {
     path: '/',
@@ -10,6 +13,14 @@ const routes = [
       {
         path: '/form',
         component: Form,
+      },
+      {
+        path: '/testMd',
+        component: testMd,
+      },
+      {
+        path: '/test2',
+        component: test2,
       },
     ],
   },
