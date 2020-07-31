@@ -1,7 +1,11 @@
 const path = require('path');
 
 const docLoader = path.resolve('./build/doc-loader/loader.js');
-
+// options: {
+//   compilerOptions: {
+//     preserveWhitespace: false
+//   }
+// }
 module.exports = {
   chainWebpack: (config) => {
     // GraphQL Loader

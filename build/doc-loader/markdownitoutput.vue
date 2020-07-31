@@ -1,117 +1,37 @@
-  <template>
-  <div>
-    <p>&lt;template&gt;&lt;div&gt;&lt;h2&gt;Button 按钮&lt;/h2&gt;
-      &lt;p&gt;常用的操作按钮。&lt;/p&gt;
-      &lt;el-button&gt;默认按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;primary&quot;&gt;主要按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;success&quot;&gt;成功按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;info&quot;&gt;信息按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;warning&quot;&gt;警告按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;danger&quot;&gt;危险按钮&lt;/el-button&gt;
-      &lt;/el-row&gt;</p>
-    <p>&lt;el-row&gt;
-      &lt;el-button plain&gt;朴素按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;primary&quot; plain&gt;主要按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;success&quot; plain&gt;成功按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;info&quot; plain&gt;信息按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;warning&quot; plain&gt;警告按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;danger&quot; plain&gt;危险按钮&lt;/el-button&gt;
-      &lt;/el-row&gt;</p>
-    <p>&lt;el-row&gt;
-      &lt;el-button round&gt;圆角按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;primary&quot; round&gt;主要按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;success&quot; round&gt;成功按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;info&quot; round&gt;信息按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;warning&quot; round&gt;警告按钮&lt;/el-button&gt;
-      &lt;el-button type=&quot;danger&quot; round&gt;危险按钮&lt;/el-button&gt;
-      &lt;/el-row&gt;</p>
-    <p>&lt;el-row&gt;
-      &lt;el-button icon=&quot;el-icon-search&quot; circle&gt;&lt;/el-button&gt;
-      &lt;/code&gt;&lt;/pre&gt;
-      &lt;demo-block&gt;&lt;/demo-block&gt;&lt;h3&gt;Attributes&lt;/h3&gt;
-      &lt;table&gt;
-      &lt;thead&gt;
-      &lt;tr&gt;
-      &lt;th&gt;参数&lt;/th&gt;
-      &lt;th&gt;说明&lt;/th&gt;
-      &lt;th&gt;类型&lt;/th&gt;
-      &lt;th&gt;可选值&lt;/th&gt;
-      &lt;th&gt;默认值&lt;/th&gt;
-      &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-      &lt;tr&gt;
-      &lt;td&gt;size&lt;/td&gt;
-      &lt;td&gt;尺寸&lt;/td&gt;
-      &lt;td&gt;string&lt;/td&gt;
-      &lt;td&gt;medium / small / mini&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;type&lt;/td&gt;
-      &lt;td&gt;类型&lt;/td&gt;
-      &lt;td&gt;string&lt;/td&gt;
-      &lt;td&gt;primary / success / warning / danger / info / text&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;plain&lt;/td&gt;
-      &lt;td&gt;是否朴素按钮&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;round&lt;/td&gt;
-      &lt;td&gt;是否圆角按钮&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;circle&lt;/td&gt;
-      &lt;td&gt;是否圆形按钮&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;loading&lt;/td&gt;
-      &lt;td&gt;是否加载中状态&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;disabled&lt;/td&gt;
-      &lt;td&gt;是否禁用状态&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;icon&lt;/td&gt;
-      &lt;td&gt;图标类名&lt;/td&gt;
-      &lt;td&gt;string&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;autofocus&lt;/td&gt;
-      &lt;td&gt;是否默认聚焦&lt;/td&gt;
-      &lt;td&gt;boolean&lt;/td&gt;
-      &lt;td&gt;—&lt;/td&gt;
-      &lt;td&gt;false&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-      &lt;td&gt;native-type&lt;/td&gt;
-      &lt;td&gt;原生 type 属性&lt;/td&gt;
-      &lt;td&gt;string&lt;/td&gt;
-      &lt;td&gt;button / submit / reset&lt;/td&gt;
-      &lt;td&gt;button&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;/tbody&gt;
-      &lt;/table&gt;
-      &lt;/div&gt;&lt;/template&gt;</p>
+<template>
+  <div class="demo">
+    <h2>Button 按钮</h2>
+    <p>常用的操作按钮。</p>
+    <demo-block>
+      <span class="demo-des">
+        <p>使用<code>type</code>、
+          <code>plain</code>、<code>round</code>和<code>circle</code>属性来定义 Button 的样式。</p>
+      </span>
+      <pre><code class="test-html"><el-row>
+  <el-button>默认按钮</el-button>
+  <el-button type="primary">主要按钮</el-button>
+  <el-button type="success">成功按钮</el-button>
+  <el-button type="info">信息按钮</el-button>
+  <el-button type="warning">警告按钮</el-button>
+  <el-button type="danger">危险按钮</el-button>
+</el-row>
+
+</code></pre>
+      <template v-slot:code>
+        <pre>&lt;el-row&gt;
+  &lt;el-button&gt;默认按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;primary&quot;&gt;主要按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;success&quot;&gt;成功按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;info&quot;&gt;信息按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;warning&quot;&gt;警告按钮&lt;/el-button&gt;
+  &lt;el-button type=&quot;danger&quot;&gt;危险按钮&lt;/el-button&gt;
+&lt;/el-row&gt;
+
+</pre></template>
+    </demo-block>
   </div>
 </template>
+
+<script>
+console.log(123);
+</script>

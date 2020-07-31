@@ -1,17 +1,43 @@
-/* eslint-disable func-names */
-/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable */
+const fs = require('fs');
+const path = require('path');
+// const compiler = require('@vue/compiler-sfc/dist/compiler-sfc.cjs');
+const md = require('markdown-it')({ html: true, linkify: true, typographer: true });
 
-const md = require('markdown-it')().use(require('markdown-it-container'), 'demo', {
+const defaultRender = md.renderer.rules.fence;
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const token = tokens[idx];
+  // 判断该 fence 是否在 :::demo 内
+  const prevToken = tokens[idx - 1];
+  const isInDemoContainer =
+    prevToken && prevToken.nesting === 1 && prevToken.info.trim().match(/^demo\s*(.*)$/);
+  if (token.info === 'html' && isInDemoContainer) {
+    return `
+    <pre><code class="test-html">${token.content}</code></pre>
+    <template v-slot:code><pre>${md.utils.escapeHtml(
+      token.content,
+    )}</pre></template>
+    `;
+  }
+  return defaultRender(tokens, idx, options, env, self);
+};
+
+md.use(require('markdown-it-container'), 'demo', {
   render(tokens, idx) {
-    const demoContent = tokens[idx].info.trim();
-    return `<demo-block>${demoContent}</demo-block>`;
+    const { type, info } = tokens[idx];
+    const demoContent = info.trim().slice(5, info.length);
+    if (type === 'container_demo_open') {
+      return `<demo-block><span class="demo-des">${md.render(demoContent)}</span>`;
+    }
+    return '</demo-block>';
   },
 });
 
-module.exports = function (source) {
+function renderTemplate(source) {
   const res = md.render(source);
-  const output = `
-  <template><div>${res}</div></template>
+  return `
+  <template><div class="demo">${res}</div></template>
 `;
-  return output;
-};
+}
+
+module.exports = renderTemplate;

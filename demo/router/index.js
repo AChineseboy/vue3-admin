@@ -17,6 +17,9 @@ const routes = [
         path: '/testMd',
         component: testMd,
       },
+      {
+        path: '/123',
+      },
     ],
   },
 ];
