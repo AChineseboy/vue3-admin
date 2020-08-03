@@ -3,7 +3,6 @@ import Layout from '../layout/index.vue';
 import Form from '../views/form.vue';
 import testMd from '../../docs/test.md';
 
-console.log(testMd, Form);
 const routes = [
   {
     path: '/',
@@ -16,9 +15,6 @@ const routes = [
       {
         path: '/testMd',
         component: testMd,
-      },
-      {
-        path: '/123',
       },
     ],
   },

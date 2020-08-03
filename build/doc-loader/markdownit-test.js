@@ -12,8 +12,10 @@ md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   const isInDemoContainer =
     prevToken && prevToken.nesting === 1 && prevToken.info.trim().match(/^demo\s*(.*)$/);
   if (token.info === 'html' && isInDemoContainer) {
+    const scriptReg = /<script[^>]*>(?:.|[\r\n])*<\/script>/;
+    console.log(token.content.replace(scriptReg, ''))
     return `
-    <pre><code class="test-html">${token.content}</code></pre>
+    <pre><code class="test-html">${token.content.replace(scriptReg, '')}</code></pre>
     <template v-slot:code><pre>${md.utils.escapeHtml(
       token.content,
     )}</pre></template>

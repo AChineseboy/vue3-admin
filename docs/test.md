@@ -1,16 +1,87 @@
-## Button 按钮
+## Button 按钮1
 常用的操作按钮。
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
 
 ```html
-<el-row>
-  <el-button>默认按钮</el-button>
-  <el-button type="primary">主要按钮</el-button>
-  <el-button type="success">成功按钮</el-button>
-  <el-button type="info">信息按钮</el-button>
-  <el-button type="warning">警告按钮</el-button>
-  <el-button type="danger">危险按钮</el-button>
-</el-row>
-<script>console.log(123)</script>
+  <div>
+    <zm-form
+      label-position="left"
+      :rules="rules"
+      :model="form"
+    >
+      <zm-form-item
+        label="姓名"
+        prop="name"
+      >
+        <zm-input
+          v-model="form.name"
+          show-word-limit
+          max-length='20'
+        >
+        </zm-input>
+      </zm-form-item>
+
+      <zm-form-item label="switch">
+        <zm-switch
+          v-model="form.switchVal"
+          check-value="123"
+          uncheck-value="456"
+          :disabled="true"
+          @change="switchHandle"
+        ></zm-switch>
+      </zm-form-item>
+    </zm-form>
+
+    <zm-pagination
+      :total="100"
+      :page-size="30"
+      v-model:currentPage="currentPage"
+    ></zm-pagination>
+    <i class="zm-icon-headphones"></i>
+  </div>
+<script>
+import { ref } from 'vue';
+
+const rules = {
+  name: [
+    {
+      required: true,
+      message: '请输入',
+      trigger: 'blur',
+    },
+    {
+      reg: /^123$/,
+      trigger: 'blur',
+      message: '请输入123',
+    },
+    {
+      trigger: 'blur',
+      message: '函数式',
+      validator: () => true,
+    },
+  ],
+};
+
+export default {
+  setup() {
+    const form = {
+      name: 123,
+      switchVal: '123',
+    };
+    function switchHandle(val) {
+      // eslint-disable-next-line no-console
+      console.log(val);
+    }
+    const currentPage = ref(1);
+    return {
+      rules,
+      form,
+      switchHandle,
+      currentPage,
+    };
+  },
+};
+</script>
+
 ```
 :::

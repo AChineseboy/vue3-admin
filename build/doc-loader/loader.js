@@ -5,12 +5,11 @@ const path = require('path')
 const renderTemplate = require('./markdownit-test');
 
 function main(source) {
-  const scriptReg = /<script>\S+<\/script>/;
-  const template = renderTemplate(source.replace(scriptReg, ''));
+  const scriptReg = /<script[^>]*>(?:.|[\r\n])*<\/script>/;
+  const template = renderTemplate(source);
   const scriptCode = source.match(scriptReg);
-  fs.writeFileSync(path.resolve(__dirname, './markdownitoutput.vue'), template + '\n' + (scriptCode.length > 0 ? scriptCode[0] : ''))
-  return template + '\n' + (scriptCode.length > 0 ? scriptCode[0] : '')
+  fs.writeFileSync(path.resolve(__dirname, './markdownitoutput.vue'), template + '\n' + (scriptCode ? scriptCode[0] : ''))
+  return template + '\n' + (scriptCode ? scriptCode[0] : '')
 }
-
 
 module.exports = main

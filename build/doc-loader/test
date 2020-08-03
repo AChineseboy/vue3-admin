@@ -1,8 +1,26 @@
-&lt;el-row&gt;
-  &lt;el-button&gt;默认按钮&lt;/el-button&gt;
-  &lt;el-button type=&quot;primary&quot;&gt;主要按钮&lt;/el-button&gt;
-  &lt;el-button type=&quot;success&quot;&gt;成功按钮&lt;/el-button&gt;
-  &lt;el-button type=&quot;info&quot;&gt;信息按钮&lt;/el-button&gt;
-  &lt;el-button type=&quot;warning&quot;&gt;警告按钮&lt;/el-button&gt;
-  &lt;el-button type=&quot;danger&quot;&gt;危险按钮&lt;/el-button&gt;
-&lt;/el-row&gt;
+## Button 按钮1
+常用的操作按钮。
+:::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
+
+```html
+<zm-input
+  v-model="name"
+  show-word-limit
+  max-length='20'
+>
+</zm-input>
+<script>
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const name = ref(null);
+    console.log(name, '123')
+    return {
+      name
+    }
+  }
+}
+</script>
+```
+:::
